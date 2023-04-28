@@ -56,7 +56,7 @@ contract KazamaPrivateSale {
     bool public saleActive;
     uint256 public kazamaPerUsd = 1000;
     uint256 public minimumBuy = 1;
-    uint256 public refPercentage = 5;
+    uint256 public refPercentage = 5; // Will be divided by 2, so 2.5%
     SenshiDummies senshidummies;
 
     // Bonus settings
@@ -137,7 +137,7 @@ contract KazamaPrivateSale {
                 }
                 if (referredBy != 0x0000000000000000000000000000000000000000 &&
                     referredBy != msg.sender && refLinkActive[referredBy] == true) {
-                    uint256 referrerUsd = amount / 100 * refPercentage;
+                    uint256 referrerUsd = amount / 100 * refPercentage / 2;
                     uint256 correctedUsd = amount - referrerUsd;
                     totalUsdReferred[referredBy] = totalUsdReferred[referredBy] + amount;
                     totalUsdRewarded[referredBy] = totalUsdRewarded[referredBy] + amount;
@@ -177,7 +177,7 @@ contract KazamaPrivateSale {
                 }
                 if (referredBy != 0x0000000000000000000000000000000000000000 &&
                     referredBy != msg.sender && refLinkActive[referredBy] == true) {
-                    uint256 referrerUsd = amount / 100 * refPercentage;
+                    uint256 referrerUsd = amount / 100 * refPercentage / 2;
                     uint256 correctedUsd = amount - referrerUsd;
                     totalUsdReferred[referredBy] = totalUsdReferred[referredBy] + amount;
                     totalUsdRewarded[referredBy] = totalUsdRewarded[referredBy] + amount;
@@ -217,7 +217,7 @@ contract KazamaPrivateSale {
                 }
                 if (referredBy != 0x0000000000000000000000000000000000000000 &&
                     referredBy != msg.sender && refLinkActive[referredBy] == true) {
-                    uint256 referrerUsd = amount / 100 * refPercentage;
+                    uint256 referrerUsd = amount / 100 * refPercentage / 2;
                     uint256 correctedUsd = amount - referrerUsd;
                     totalUsdReferred[referredBy] = totalUsdReferred[referredBy] + amount;
                     totalUsdRewarded[referredBy] = totalUsdRewarded[referredBy] + amount;
@@ -243,7 +243,7 @@ contract KazamaPrivateSale {
                 }
                 if (referredBy != 0x0000000000000000000000000000000000000000 &&
                     referredBy != msg.sender && refLinkActive[referredBy] == true) {
-                    uint256 referrerUsd = amount / 100 * refPercentage;
+                    uint256 referrerUsd = amount / 100 * refPercentage / 2;
                     uint256 correctedUsd = amount - referrerUsd;
                     totalUsdReferred[referredBy] = totalUsdReferred[referredBy] + amount;
                     totalUsdRewarded[referredBy] = totalUsdRewarded[referredBy] + amount;
