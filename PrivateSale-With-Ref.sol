@@ -37,10 +37,10 @@ contract KazamaPrivateSale {
     mapping(address => bool) internal senshiMaster;
 
     // P-KAZAMA address
-    IBEP20 presaleToken = IBEP20(0x52230fF598b8Ad36aFa00D2948122Eca98151b02);
+    IBEP20 presaleToken = IBEP20(0xcf72b6D227a88bFfEB6198F4a7BD123636EA34E3);
 
     // USDT address
-    IBEP20 usdToken = IBEP20(0x7ef95a0FEE0Dd31b22626fA2e10Ee6A223F8a684);
+    IBEP20 usdToken = IBEP20(0x55d398326f99059fF775485246999027B3197955);
 
     // Public info
     uint256 public biggestRefAmount;
@@ -55,12 +55,12 @@ contract KazamaPrivateSale {
     address public dummyAddress;
     bool public saleActive;
     uint256 public kazamaPerUsd = 1000;
-    uint256 public minimumBuy = 1;
+    uint256 public minimumBuy = 100;
     uint256 public refPercentage = 5; // Will be divided by 2, so 2.5%
     SenshiDummies senshidummies;
 
     // Bonus settings
-    uint256 public maxWallets = 4;
+    uint256 public maxWallets = 150;
     uint256 public currentWallets;
     bool public bonusActive;
 
@@ -115,7 +115,7 @@ contract KazamaPrivateSale {
         // If bonus is activated
         if (bonusActive == true) {
             // If amount below 500
-            if (amount < 5e18) {
+            if (amount < 500e18) {
                 uint256 bonusPercentage = 2;
                 uint256 bonusTokens = kazamaToReceive / 100 * bonusPercentage;
                 uint256 toReceive = kazamaToReceive + bonusTokens;
@@ -155,7 +155,7 @@ contract KazamaPrivateSale {
                 }
             }
             // If amount between 500 and 1000
-            if (amount >= 5e18 && amount < 10e18) {
+            if (amount >= 500e18 && amount < 1000e18) {
                 uint256 bonusPercentage = 3;
                 uint256 bonusTokens = kazamaToReceive / 100 * bonusPercentage;
                 uint256 toReceive = kazamaToReceive + bonusTokens;
@@ -195,7 +195,7 @@ contract KazamaPrivateSale {
                 }
             }
             // If amount above 1000
-            if (amount >= 10e18) {
+            if (amount >= 1000e18) {
                 uint256 bonusPercentage = 4;
                 uint256 bonusTokens = kazamaToReceive / 100 * bonusPercentage;
                 uint256 toReceive = kazamaToReceive + bonusTokens;
