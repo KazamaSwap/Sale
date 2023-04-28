@@ -115,7 +115,7 @@ contract KazamaPrivateSale {
         // If bonus is activated
         if (bonusActive == true) {
             // If amount below 500
-            if (amount < 5) {
+            if (amount < 5e18) {
                 uint256 bonusPercentage = 2;
                 uint256 bonusTokens = kazamaToReceive / 100 * bonusPercentage;
                 uint256 toReceive = kazamaToReceive + bonusTokens;
@@ -155,7 +155,7 @@ contract KazamaPrivateSale {
                 }
             }
             // If amount between 500 and 1000
-            if (amount >= 5 && amount < 10) {
+            if (amount >= 5e18 && amount < 10e18) {
                 uint256 bonusPercentage = 3;
                 uint256 bonusTokens = kazamaToReceive / 100 * bonusPercentage;
                 uint256 toReceive = kazamaToReceive + bonusTokens;
@@ -195,7 +195,7 @@ contract KazamaPrivateSale {
                 }
             }
             // If amount above 1000
-            if (amount >= 10) {
+            if (amount >= 10e18) {
                 uint256 bonusPercentage = 4;
                 uint256 bonusTokens = kazamaToReceive / 100 * bonusPercentage;
                 uint256 toReceive = kazamaToReceive + bonusTokens;
@@ -300,6 +300,11 @@ contract KazamaPrivateSale {
     function recoverPresaleTokens () external onlySenshiMaster {
         uint256 tokenAmount = IBEP20(presaleToken).balanceOf(address(this));
         IBEP20(presaleToken).transfer(msg.sender, tokenAmount);
+    }
+
+    // Change minimum buy
+    function setMinimumBuy (uint256 _minimumBuy) external onlySenshiMaster {
+        minimumBuy = _minimumBuy;
     }
 
     // Set active ref manually
